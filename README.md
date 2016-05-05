@@ -157,6 +157,218 @@ Sample request invocation looks like this:
 */
 -(void)didConnectionTimeout;
 
+
+* **didAuthorizeBLEChannel** - It will invoke if SR Module authorization established successfully.
+```
+/*!
+*  @method didAuthorizeBLEChannel:
+*
+*  @discussion Invoke if SR Module authorization established successfully.
+*
+*/
+-(void)didAuthorizeBLEChannel;
+
+
+* **didAuthorizeBLEChannelFailed** - It will invoke if SR Module authorization failed due to some error.
+```
+/*!
+*  @method didAuthorizeBLEChannelFailed:
+*
+*  @discussion It will invoke if SR Module authorization failed due to some error.
+*
+*/
+-(void)didAuthorizeBLEChannelFailed:(NSString *)error;
+
+
+* **didReadConfiguration** - Invoke after successful configuration set in device.
+```
+/*!
+*  @method didReadConfiguration:
+*
+*  @discussion Invoke after successful configuration set in device.
+*
+*/
+-(void)didReadConfiguration:(NSData *)data;
+
+* **didWriteConfiguration** - Invoke when configuration read successfully.
+```
+/*!
+*  @method didWriteConfiguration:
+*
+*  @discussion Invoke after successful configuration set in device.
+*
+*/
+-(void)didWriteConfiguration;
+
+
+* **didRelayOperated** - Invoke when relay operated successfully.
+```
+/*!
+*  @method didRelayOperated:
+*
+*  @discussion This method will invoke when relay operated successfully.
+*
+*  @param  data return relay data.
+*/
+-(void)didRelayOperated:(NSData *)data;
+
+
+* **didSolenoidOperated** - Invoke when Solenoid operated.
+```
+/*!
+*  @method didSolenoidOperated:
+*
+*  @discussion This method will invoke when Solenoid operated.
+*
+*  @param  data return Solenoid data.
+*/
+-(void)didSolenoidOperated:(NSData *)data;
+
+
+* **didMotorOperated** - Invoke when motor operated.
+```
+/*!
+*  @method didMotorOperated:
+*
+*  @discussion This method will invoke when motor operated.
+*
+*  @param  data return motor data.
+*/
+-(void)didMotorOperated:(NSData *)data;
+
+
+* **didGetSwitchStatus** - Invoke when switch status received.
+```
+/*!
+*  @method didGetSwitchStatus:
+*
+*  @discussion This method will invoke when switch status received.
+*
+*  @param  data return switch data.
+*/
+
+-(void)didGetSwitchStatus:(NSData *)data;
+
+
+* **didGetTemperatureSensor** - Invoke when temperature sensor received.
+```
+/*!
+*  @method didGetTemperatureSensor:
+*
+*  @discussion This method will invoke when temperature sensor received.
+*
+*  @param  data return temperature data.
+*/
+
+-(void)didGetTemperatureSensor:(NSData *)data;
+
+* **didLightOperated** - Invoke when light operation successful.
+```
+/*!
+*  @method didLightOperated:
+*
+*  @discussion This method will invoke when light operation successful.
+*
+*  @param  data return light data.
+*/
+-(void)didLightOperated:(NSData *)data;
+
+
+* **didChangedLightIntensity** - Invoke when light intensity changed successful.
+```
+/*!
+*  @method didChangedLightIntensity:
+*
+*  @discussion This method will invoke when light intensity changed successful.
+*
+*  @param  data return light data.
+*/
+-(void)didChangedLightIntensity:(NSData *)data;
+
+
+* **didGetAccelerometer** - Invoke when accelerometer data received.
+```
+/*!
+*  @method didGetAccelerometer:
+*
+*  @discussion This method will invoke when accelerometer data received.
+*
+*  @param  data return accelerometer data.
+*/
+-(void)didGetAccelerometer:(NSData *)data;
+
+* **didGetMotionSensor** - Invoke when motion sensor data received.
+```
+/*!
+*  @method didGetMotionSensor:
+*
+*  @discussion This method will invoke when motion sensor data received.
+*
+*  @param  data return motion sensor data.
+*/
+-(void)didGetMotionSensor:(NSData *)data;
+
+
+* **didGetWaterSensor** - Invoke when water sensor data received.
+```
+/*!
+*  @method didGetWaterSensor:
+*
+*  @discussion This method will invoke when water sensor data received.
+*
+*  @param  data return water sensor data.
+*/
+-(void)didGetWaterSensor:(NSData *)data;
+
+
+* **didGetBatteryLevel** - Invoke when battery level received.
+```
+/*!
+*  @method didGetBatteryLevel:
+*
+*  @discussion This method will invoke when battery level received.
+*
+*  @param  data return battery level data.
+*/
+-(void)didGetBatteryLevel:(NSData *)data;
+
+
+* **didGetHumidity** - Invoke when humidity data received.
+```
+/*!
+*  @method didGetHumidity:
+*
+*  @discussion This method will invoke when humidity data received.
+*
+*  @param  data return humidity data.
+*/
+-(void)didGetHumidity:(NSData *)data;
+
+* **didOperationFailWithError** - Invoke if any operation fail.
+```
+/*!
+*  @method didOperationFailWithError:
+*
+*  @discussion This method will invoke if any operation fail.
+*
+*  @param  error return string which describes error code and error description.
+*/
+
+-(void)didOperationFailWithError:(NSString *)error;
+
+
+* **authorizeBLEChannel** - Authorizes BLE session based on security level.
+```
+/*!
+*  @method authorizeBLEChannel:
+*
+*  @discussion Authorizes BLE session based on security level.
+*
+*/
+
+-(void)authorizeBLEChannel;
+
+
 ```
 
 * **getSRDeviceInfo** - It retrieves basics information of connected peripheral like H/W and S/W version, manufacturer name, model number etc.
