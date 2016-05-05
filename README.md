@@ -284,7 +284,7 @@ Sample request invocation looks like this:
 *  @param  data return light data.
 */
 -(void)didLightOperated:(NSData *)data;
-
+```
 
 * **didChangedLightIntensity** - Invoke when light intensity changed successful.
 ```
@@ -296,7 +296,7 @@ Sample request invocation looks like this:
 *  @param  data return light data.
 */
 -(void)didChangedLightIntensity:(NSData *)data;
-
+```
 
 * **didGetAccelerometer** - Invoke when accelerometer data received.
 ```
@@ -308,6 +308,7 @@ Sample request invocation looks like this:
 *  @param  data return accelerometer data.
 */
 -(void)didGetAccelerometer:(NSData *)data;
+```
 
 * **didGetMotionSensor** - Invoke when motion sensor data received.
 ```
@@ -319,7 +320,7 @@ Sample request invocation looks like this:
 *  @param  data return motion sensor data.
 */
 -(void)didGetMotionSensor:(NSData *)data;
-
+```
 
 * **didGetWaterSensor** - Invoke when water sensor data received.
 ```
@@ -331,7 +332,7 @@ Sample request invocation looks like this:
 *  @param  data return water sensor data.
 */
 -(void)didGetWaterSensor:(NSData *)data;
-
+```
 
 * **didGetBatteryLevel** - Invoke when battery level received.
 ```
@@ -343,7 +344,7 @@ Sample request invocation looks like this:
 *  @param  data return battery level data.
 */
 -(void)didGetBatteryLevel:(NSData *)data;
-
+```
 
 * **didGetHumidity** - Invoke when humidity data received.
 ```
@@ -355,6 +356,7 @@ Sample request invocation looks like this:
 *  @param  data return humidity data.
 */
 -(void)didGetHumidity:(NSData *)data;
+```
 
 * **didOperationFailWithError** - Invoke if any operation fail.
 ```
@@ -367,7 +369,7 @@ Sample request invocation looks like this:
 */
 
 -(void)didOperationFailWithError:(NSString *)error;
-
+```
 
 * **authorizeBLEChannel** - Authorizes BLE session based on security level.
 ```
