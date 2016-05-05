@@ -123,7 +123,18 @@ Sample request invocation looks like this:
 * **disconnectSRDevice** - It cancels an active or pending connection to <i>peripheral</i>.
 * **readRSSIValue** - It retrieves the current RSSI of the link for connected peripheral.
 * **stopScan** - It stops scanning for peripherals or SR Devices.
-* **authorizeBLEChannel** - It creates and authorizes session based on security level set on SR Module. If it returns success, you are ready to perform any of the operation. It needs to add two delegate methods **didAuthorizeBLEChannel** and **didAuthorizeBLEChannelFailed** for success or failure. It needs to call after establishing connection with SR Module.
+* **centralManagerDidUpdateState** - Invoked whenever the central manager's state has been updated.
+* **didDiscoverPeripheral** - This method is invoked while scanning, upon the discovery of peripheral by central.
+* **didConnectPeripheral** -  This method is invoked when a connection initiated by {@link connectPeripheral:options:} has succeeded.
+* **didFailToConnectPeripheral** -   This method is invoked when a connection initiated by {@link connectPeripheral:options:} has failed to complete.
+* **didDisconnectPeripheral** -   This method is invoked upon the disconnection of a peripheral that was connected by {@link connectPeripheral:options:}.
+* **didDiscoverServices** -   This method returns the result of a @link discoverServices: @/link call.
+* **didDiscoverCharacteristicsForService** -   This method returns the result of a @link discoverCharacteristics:forService: @/link call. If the characteristic(s) were read successfully.
+* **didUpdateValueForCharacteristic** -   This method is invoked after a @link readValueForCharacteristic: @/link call, or upon receipt of a notification/indication.
+* **didWriteValueForCharacteristic** -   This method returns the result of a {@link writeValue:forCharacteristic:type:} call, when the <code>CBCharacteristicWriteWithResponse</code> type is used.
+* **didReadRSSI** -   This method returns the result of a @link readRSSI: @/link call.
+* **didUpdateNotificationStateForCharacteristic** -   This method returns the result of a @link setNotifyValue:forCharacteristic: @/link call.
+
 
 Sample request invocation looks like this:
 ```
