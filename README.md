@@ -157,6 +157,7 @@ Sample request invocation looks like this:
 */
 -(void)didConnectionTimeout;
 
+```
 
 * **didAuthorizeBLEChannel** - It will invoke if SR Module authorization established successfully.
 ```
@@ -168,6 +169,7 @@ Sample request invocation looks like this:
 */
 -(void)didAuthorizeBLEChannel;
 
+```
 
 * **didAuthorizeBLEChannelFailed** - It will invoke if SR Module authorization failed due to some error.
 ```
@@ -179,6 +181,7 @@ Sample request invocation looks like this:
 */
 -(void)didAuthorizeBLEChannelFailed:(NSString *)error;
 
+```
 
 * **didReadConfiguration** - Invoke after successful configuration set in device.
 ```
