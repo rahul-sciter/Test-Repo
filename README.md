@@ -146,28 +146,16 @@ Sample request invocation looks like this:
 }
 ```
 
-* **isSRDeviceConnected** - It returns TRUE or FALSE based on device is connected or not.
+* **authorizeBLEChannel** - Authorizes BLE session based on security level.
 ```
 /*!
- *  @method isSRDeviceConnected:
- *
- *  @discussion return flag (TRUE or FALSE) if device is connected or not.
- *
- */
--(BOOL)isSRDeviceConnected;
-
-```
-
-* **didConnectionTimeout** - It will invoke if peripheral connection timeout.
-```
-/*!
-*  @method didConnectionTimeout:
+*  @method authorizeBLEChannel:
 *
-*  @discussion It will invoke if peripheral connection timeout.
+*  @discussion Authorizes BLE session based on security level.
 *
 */
--(void)didConnectionTimeout;
 
+-(void)authorizeBLEChannel;
 ```
 
 * **didAuthorizeBLEChannel** - It will invoke if SR Module authorization established successfully.
@@ -194,6 +182,129 @@ Sample request invocation looks like this:
 
 ```
 
+* **getAccelerometer** - It retrieves the accelerometer value of SR Module.
+```
+/*!
+*  @method getAccelerometer:
+*
+*  @discussion get accelerometer.
+*
+*  @see  didGetAccelerometer:
+*/
+-(void)getAccelerometer;
+```
+
+* **didGetAccelerometer** - Invoke when accelerometer data received.
+```
+/*!
+*  @method didGetAccelerometer:
+*
+*  @discussion This method will invoke when accelerometer data received.
+*
+*  @param  data return accelerometer data.
+*/
+-(void)didGetAccelerometer:(NSData *)data;
+```
+
+* **getBatteryLevel** - It retrieves the battery level value of SR Module.
+```
+/*!
+*  @method getBatteryLevel:
+*
+*  @discussion get battery level.
+*
+*  @see  didGetBatteryLevel:
+*/
+-(void)getBatteryLevel;
+
+```
+
+* **didGetBatteryLevel** - Invoke when battery level received.
+```
+/*!
+*  @method didGetBatteryLevel:
+*
+*  @discussion This method will invoke when battery level received.
+*
+*  @param  data return battery level data.
+*/
+-(void)didGetBatteryLevel:(NSData *)data;
+
+```
+
+* **getCharacteristicProperty** - It retrieves property of characteristic like Readable,Notifiable or Writable.
+```
+/*!
+*  @method getCharacteristicProperty:
+*
+*  @discussion return dictionary whether characteristic isRead,isNotify or isWrite.
+*
+*/
+-(NSMutableDictionary *)getCharacteristicProperty:(CBCharacteristic *)characteristic;
+
+``` 
+
+* **getHumidity** - It retrieves the humidity value of SR Module.
+```
+/*!
+*  @method getHumidity:
+*
+*  @discussion get humidity.
+*
+*  @see  didGetHumidity:
+*/
+-(void)getHumidity;
+
+```
+
+* **didGetHumidity** - Invoke when humidity data received.
+```
+/*!
+*  @method didGetHumidity:
+*
+*  @discussion This method will invoke when humidity data received.
+*
+*  @param  data return humidity data.
+*/
+-(void)didGetHumidity:(NSData *)data;
+
+```
+
+* **getMotionSensor** - It retrieves the motion sensor value of SR Module.
+```
+/*!
+*  @method getMotionSensor:
+*
+*  @discussion get motion sensor.
+*
+*  @see  didGetMotionSensor:
+*/
+-(void)getMotionSensor;
+```
+
+* **didGetMotionSensor** - Invoke when motion sensor data received.
+```
+/*!
+*  @method didGetMotionSensor:
+*
+*  @discussion This method will invoke when motion sensor data received.
+*
+*  @param  data return motion sensor data.
+*/
+-(void)didGetMotionSensor:(NSData *)data;
+```
+
+* **getSRDeviceConfiguration** - It retrieves various configuration params of SR Module.
+```
+/*!
+*  @method getSRDeviceConfiguration:
+*
+*  @discussion get device configuration like motion sensor,humidity and other information.
+*
+*  @see  didReadConfiguration:
+*/
+-(void)getSRDeviceConfiguration;
+```
 * **didReadConfiguration** - Invoke when configuration read successfully.
 ```
 /*!
@@ -206,55 +317,38 @@ Sample request invocation looks like this:
 
 ```
 
-* **didWriteConfiguration** - Invoke when configuration set in device.
+* **getSRDeviceInfo** - It retrieves basics information of connected peripheral like H/W and S/W version, manufacturer name, model number etc.
 ```
 /*!
-*  @method didWriteConfiguration:
+*  @method getSRDeviceInfo:
 *
-*  @discussion Invoke after successful configuration set in device.
+*  @discussion return dictionary with keys H/W version, S/W version, manufacture name, Model and other information.
 *
 */
--(void)didWriteConfiguration;
+-(NSDictionary *)getSRDeviceInfo;
 
 ```
-
-* **didRelayOperated** - Invoke when relay operated successfully.
+* **getSRDeviceSecurityInfo** - It retrieves basics information of connected peripheral like name,serial no,security level, security keys etc.
 ```
 /*!
-*  @method didRelayOperated:
+*  @method getSRDeviceSecurityInfo:
 *
-*  @discussion This method will invoke when relay operated successfully.
+*  @discussion return dictionary with keys peripheral,name,serial no,security level and other information.
 *
-*  @param  data return relay data.
 */
--(void)didRelayOperated:(NSData *)data;
+-(NSDictionary *)getSRDeviceSecurityInfo;
 
 ```
-
-* **didSolenoidOperated** - Invoke when Solenoid operated.
+* **getSwitchStatus** - It retrieves the status of SR Module's switch.
 ```
 /*!
-*  @method didSolenoidOperated:
+*  @method getSwitchStatus:
 *
-*  @discussion This method will invoke when Solenoid operated.
+*  @discussion get switch status.
 *
-*  @param  data return Solenoid data.
+*  @see  didGetSwitchStatus:
 */
--(void)didSolenoidOperated:(NSData *)data;
-
-```
-
-* **didMotorOperated** - Invoke when motor operated.
-```
-/*!
-*  @method didMotorOperated:
-*
-*  @discussion This method will invoke when motor operated.
-*
-*  @param  data return motor data.
-*/
--(void)didMotorOperated:(NSData *)data;
-
+-(void)getSwitchStatus;
 ```
 
 * **didGetSwitchStatus** - Invoke when switch status received.
@@ -271,6 +365,18 @@ Sample request invocation looks like this:
 
 ```
 
+* **getTemperatureSensor** - It retrieves the temperature of SR Module's sensor.
+```
+/*!
+*  @method getTemperatureSensor:
+*
+*  @discussion get temperature sensor.
+*
+*  @see  didGetTemperatureSensor:
+*/
+-(void)getTemperatureSensor;
+```
+
 * **didGetTemperatureSensor** - Invoke when temperature sensor received.
 ```
 /*!
@@ -285,6 +391,60 @@ Sample request invocation looks like this:
 
 ```
 
+
+
+* **getWaterSensor** - It retrieves the water sensor value of SR Module.
+```
+/*!
+*  @method getWaterSensor:
+*
+*  @discussion get water sensor.
+*
+*  @see  didGetWaterSensor:
+*/
+-(void)getWaterSensor;
+
+``` 
+
+* **didGetWaterSensor** - Invoke when water sensor data received.
+```
+/*!
+*  @method didGetWaterSensor:
+*
+*  @discussion This method will invoke when water sensor data received.
+*
+*  @param  data return water sensor data.
+*/
+-(void)didGetWaterSensor:(NSData *)data;
+
+```
+
+* **isSRDeviceConnected** - It returns TRUE or FALSE based on device is connected or not.
+```
+/*!
+ *  @method isSRDeviceConnected:
+ *
+ *  @discussion return flag (TRUE or FALSE) if device is connected or not.
+ *
+ */
+-(BOOL)isSRDeviceConnected;
+
+```
+
+* **operateLight** - It operates light of SR Module.
+```
+/*!
+*  @method operateLight:
+*
+*  @discussion operate light.
+*
+*  @param aBoolIsOn Pass true for switch on light and false to switch off.
+*
+*  @see  didLightOperated:
+*/
+-(void)operateLight:(BOOL)aBoolIsOn;
+```
+
 * **didLightOperated** - Invoke when light operation successful.
 ```
 /*!
@@ -295,6 +455,100 @@ Sample request invocation looks like this:
 *  @param  data return light data.
 */
 -(void)didLightOperated:(NSData *)data;
+```
+
+* **operateMotor** - It operates motor of SR Module.
+```
+/*!
+*  @method operateMotor:
+*
+*  @discussion operate motor.
+*
+*  @param isForward Pass true for motor's forward operation and false for reverse operation.
+*
+*  @see  didMotorOperated:
+*/
+-(void)operateMotor:(BOOL)aBoolIsForward;
+```
+
+* **didMotorOperated** - Invoke when motor operated.
+```
+/*!
+*  @method didMotorOperated:
+*
+*  @discussion This method will invoke when motor operated.
+*
+*  @param  data return motor data.
+*/
+-(void)didMotorOperated:(NSData *)data;
+
+```
+
+* **operateRelay** - It operates relay of SR Module.
+```
+/*!
+*  @method operateRelay:
+*
+*  @discussion operate relay.
+*
+*  @param isMomentary Pass true for Relay Momentary and false for Relay Maintain
+*
+*  @see  didRelayOperated:
+*/
+-(void)operateRelay:(BOOL)isMomentary;
+```
+
+* **didRelayOperated** - Invoke when relay operated successfully.
+```
+/*!
+*  @method didRelayOperated:
+*
+*  @discussion This method will invoke when relay operated successfully.
+*
+*  @param  data return relay data.
+*/
+-(void)didRelayOperated:(NSData *)data;
+
+```
+
+* **operateSolenoid** - It operates solenoid of SR Module.
+```
+/*!
+*  @method operateSolenoid:
+*
+*  @discussion operate solenoid.
+*
+*  @see  didSolenoidOperated:
+*/
+-(void)operateSolenoid;
+```
+
+* **didSolenoidOperated** - Invoke when Solenoid operated.
+```
+/*!
+*  @method didSolenoidOperated:
+*
+*  @discussion This method will invoke when Solenoid operated.
+*
+*  @param  data return Solenoid data.
+*/
+-(void)didSolenoidOperated:(NSData *)data;
+
+```
+
+* **setLightIntensity** - It sets intensity of SR Module's light.
+```
+/*!
+*  @method setLightIntensity:
+*
+*  @discussion set light intensity.
+*
+*  @param aIntIntensity  Pass integer value between 0 to 100 to set intensity.
+*
+*  @see  didChangedLightIntensity:
+*/
+-(void)setLightIntensity:(int)aIntIntensity;
+
 ```
 
 * **didChangedLightIntensity** - Invoke when light intensity changed successful.
@@ -309,124 +563,6 @@ Sample request invocation looks like this:
 -(void)didChangedLightIntensity:(NSData *)data;
 ```
 
-* **didGetAccelerometer** - Invoke when accelerometer data received.
-```
-/*!
-*  @method didGetAccelerometer:
-*
-*  @discussion This method will invoke when accelerometer data received.
-*
-*  @param  data return accelerometer data.
-*/
--(void)didGetAccelerometer:(NSData *)data;
-```
-
-* **didGetMotionSensor** - Invoke when motion sensor data received.
-```
-/*!
-*  @method didGetMotionSensor:
-*
-*  @discussion This method will invoke when motion sensor data received.
-*
-*  @param  data return motion sensor data.
-*/
--(void)didGetMotionSensor:(NSData *)data;
-```
-
-* **didGetWaterSensor** - Invoke when water sensor data received.
-```
-/*!
-*  @method didGetWaterSensor:
-*
-*  @discussion This method will invoke when water sensor data received.
-*
-*  @param  data return water sensor data.
-*/
--(void)didGetWaterSensor:(NSData *)data;
-```
-
-* **didGetBatteryLevel** - Invoke when battery level received.
-```
-/*!
-*  @method didGetBatteryLevel:
-*
-*  @discussion This method will invoke when battery level received.
-*
-*  @param  data return battery level data.
-*/
--(void)didGetBatteryLevel:(NSData *)data;
-```
-
-* **didGetHumidity** - Invoke when humidity data received.
-```
-/*!
-*  @method didGetHumidity:
-*
-*  @discussion This method will invoke when humidity data received.
-*
-*  @param  data return humidity data.
-*/
--(void)didGetHumidity:(NSData *)data;
-```
-
-* **didOperationFailWithError** - Invoke if any operation fail.
-```
-/*!
-*  @method didOperationFailWithError:
-*
-*  @discussion This method will invoke if any operation fail.
-*
-*  @param  error return string which describes error code and error description.
-*/
-
--(void)didOperationFailWithError:(NSString *)error;
-```
-
-* **authorizeBLEChannel** - Authorizes BLE session based on security level.
-```
-/*!
-*  @method authorizeBLEChannel:
-*
-*  @discussion Authorizes BLE session based on security level.
-*
-*/
-
--(void)authorizeBLEChannel;
-
-
-```
-
-* **getSRDeviceInfo** - It retrieves basics information of connected peripheral like H/W and S/W version, manufacturer name, model number etc.
-```
-/*!
- *  @method getSRDeviceInfo:
- *
- *  @discussion return dictionary with keys H/W version, S/W version, manufacture name, Model and other information.
- *
- */
--(NSDictionary *)getSRDeviceInfo;
-```
-* **getSRDeviceSecurityInfo** - It retrieves basics information of connected peripheral like name,serial no,security level, security keys etc.
-```
-/*!
- *  @method getSRDeviceSecurityInfo:
- *
- *  @discussion return dictionary with keys peripheral,name,serial no,security level and other information.
- *
- */
--(NSDictionary *)getSRDeviceSecurityInfo;
-```
-
-* **getCharacteristicProperty** - It retrieves property of characteristic like Readable,Notifiable or Writable.
-```
-/*!
- *  @method getCharacteristicProperty:
- *
- *  @discussion return dictionary whether characteristic isRead,isNotify or isWrite.
- *
- */
--(NSMutableDictionary *)getCharacteristicProperty:(CBCharacteristic *)characteristic;
-```
 * **setSRDeviceConfiguration** - It sets device configuration like motion sensor,humidity and other information.
 ```
 /*!
@@ -446,154 +582,42 @@ Sample request invocation looks like this:
 
 -(void)setSRDeviceConfiguration:(BOOL)isMotion isHumidity:(BOOL)isHumidity txPower:(int)txPower antennaType:(int)antennaType networkConfiguration:(int)networkConfiguration;
 ```
-* **getSRDeviceConfiguration** - It retrieves various configuration params of SR Module.
+
+
+* **didWriteConfiguration** - Invoke when configuration set in device.
 ```
 /*!
- *  @method getSRDeviceConfiguration:
- *
- *  @discussion get device configuration like motion sensor,humidity and other information.
- *
- *  @see  didReadConfiguration:
- */
--(void)getSRDeviceConfiguration;
+*  @method didWriteConfiguration:
+*
+*  @discussion Invoke after successful configuration set in device.
+*
+*/
+-(void)didWriteConfiguration;
+
 ```
-* **operateRelay** - It operates relay of SR Module.
-```
-/*!
- *  @method operateRelay:
- *
- *  @discussion operate relay.
- *
- *  @param isMomentary Pass true for Relay Momentary and false for Relay Maintain
- *
- *  @see  didRelayOperated:
- */
--(void)operateRelay:(BOOL)isMomentary;
-```
-* **operateSolenoid** - It operates solenoid of SR Module.
+
+* **didOperationFailWithError** - Invoke if any operation fail.
 ```
 /*!
- *  @method operateSolenoid:
- *
- *  @discussion operate solenoid.
- *
- *  @see  didSolenoidOperated:
- */
--(void)operateSolenoid;
+*  @method didOperationFailWithError:
+*
+*  @discussion This method will invoke if any operation fail.
+*
+*  @param  error return string which describes error code and error description.
+*/
+
+-(void)didOperationFailWithError:(NSString *)error;
+
 ```
-* **operateMotor** - It operates motor of SR Module.
-```
-/*!
- *  @method operateMotor:
- *
- *  @discussion operate motor.
- *
- *  @param isForward Pass true for motor's forward operation and false for reverse operation.
- *
- *  @see  didMotorOperated:
- */
--(void)operateMotor:(BOOL)aBoolIsForward;
-```
-* **operateLight** - It operates light of SR Module.
+
+* **didConnectionTimeout** - It will invoke if peripheral connection timeout.
 ```
 /*!
- *  @method operateLight:
- *
- *  @discussion operate light.
- *
- *  @param aBoolIsOn Pass true for switch on light and false to switch off.
- *
- *  @see  didLightOperated:
- */
--(void)operateLight:(BOOL)aBoolIsOn;
+*  @method didConnectionTimeout:
+*
+*  @discussion It will invoke if peripheral connection timeout.
+*
+*/
+-(void)didConnectionTimeout;
+
 ```
-* **setLightIntensity** - It sets intensity of SR Module's light.
-```
-/*!
- *  @method setLightIntensity:
- *
- *  @discussion set light intensity.
- *
- *  @param aIntIntensity  Pass integer value between 0 to 100 to set intensity.
- *
- *  @see  didChangedLightIntensity:
- */
--(void)setLightIntensity:(int)aIntIntensity;
-```
-* **getSwitchStatus** - It retrieves the status of SR Module's switch.
-```
-/*!
- *  @method getSwitchStatus:
- *
- *  @discussion get switch status.
- *
- *  @see  didGetSwitchStatus:
- */
--(void)getSwitchStatus;
-```
-* **getTemperatureSensor** - It retrieves the temperature of SR Module's sensor.
-```
-/*!
- *  @method getTemperatureSensor:
- *
- *  @discussion get temperature sensor.
- *
- *  @see  didGetTemperatureSensor:
- */
--(void)getTemperatureSensor;
-```
-* **getAccelerometer** - It retrieves the accelerometer value of SR Module.
-```
-/*!
- *  @method getAccelerometer:
- *
- *  @discussion get accelerometer.
- *
- *  @see  didGetAccelerometer:
- */
--(void)getAccelerometer;
-```
-* **getMotionSensor** - It retrieves the motion sensor value of SR Module.
-```
-/*!
- *  @method getMotionSensor:
- *
- *  @discussion get motion sensor.
- *
- *  @see  didGetMotionSensor:
- */
--(void)getMotionSensor;
-``` 
-* **getWaterSensor** - It retrieves the water sensor value of SR Module.
-```
-/*!
- *  @method getWaterSensor:
- *
- *  @discussion get water sensor.
- *
- *  @see  didGetWaterSensor:
- */
--(void)getWaterSensor;
-``` 
-* **getBatteryLevel** - It retrieves the battery level value of SR Module.
-```
-/*!
- *  @method getBatteryLevel:
- *
- *  @discussion get battery level.
- *
- *  @see  didGetBatteryLevel:
- */
--(void)getBatteryLevel;
-``` 
-* **getHumidity** - It retrieves the humidity value of SR Module.
-```
-/*!
- *  @method getHumidity:
- *
- *  @discussion get humidity.
- *
- *  @see  didGetHumidity:
- */
--(void)getHumidity;
-``` 
