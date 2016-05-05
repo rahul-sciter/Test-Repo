@@ -193,6 +193,8 @@ Sample request invocation looks like this:
 */
 -(void)didReadConfiguration:(NSData *)data;
 
+```
+
 * **didWriteConfiguration** - Invoke when configuration read successfully.
 ```
 /*!
@@ -203,6 +205,7 @@ Sample request invocation looks like this:
 */
 -(void)didWriteConfiguration;
 
+```
 
 * **didRelayOperated** - Invoke when relay operated successfully.
 ```
@@ -215,6 +218,7 @@ Sample request invocation looks like this:
 */
 -(void)didRelayOperated:(NSData *)data;
 
+```
 
 * **didSolenoidOperated** - Invoke when Solenoid operated.
 ```
@@ -227,6 +231,7 @@ Sample request invocation looks like this:
 */
 -(void)didSolenoidOperated:(NSData *)data;
 
+```
 
 * **didMotorOperated** - Invoke when motor operated.
 ```
@@ -239,6 +244,7 @@ Sample request invocation looks like this:
 */
 -(void)didMotorOperated:(NSData *)data;
 
+```
 
 * **didGetSwitchStatus** - Invoke when switch status received.
 ```
@@ -252,6 +258,7 @@ Sample request invocation looks like this:
 
 -(void)didGetSwitchStatus:(NSData *)data;
 
+```
 
 * **didGetTemperatureSensor** - Invoke when temperature sensor received.
 ```
@@ -264,6 +271,8 @@ Sample request invocation looks like this:
 */
 
 -(void)didGetTemperatureSensor:(NSData *)data;
+
+```
 
 * **didLightOperated** - Invoke when light operation successful.
 ```
