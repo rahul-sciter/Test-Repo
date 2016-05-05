@@ -194,19 +194,19 @@ Sample request invocation looks like this:
 
 ```
 
-* **didReadConfiguration** - Invoke after successful configuration set in device.
+* **didReadConfiguration** - Invoke when configuration read successfully.
 ```
 /*!
 *  @method didReadConfiguration:
 *
-*  @discussion Invoke after successful configuration set in device.
+*  @discussion Invoke when configuration read successfully.
 *
 */
 -(void)didReadConfiguration:(NSData *)data;
 
 ```
 
-* **didWriteConfiguration** - Invoke when configuration read successfully.
+* **didWriteConfiguration** - Invoke when configuration set in device.
 ```
 /*!
 *  @method didWriteConfiguration:
