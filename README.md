@@ -5,7 +5,6 @@
 - [Prerequisites](#prerequisites)
 - [Introduction](#introduction)
 - [Examples](#examples)
-- [SecuRemote Devkit-1](#SecuRemote Devkit-1)
 
 ## Prerequisites
 
