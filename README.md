@@ -30,7 +30,8 @@ Learn more:
 
 **SecuRemote Devkit-1** contains examples like Temperature, LED.
 
-<img src="Screenshots/Home.png” alt="Home Screen" width="230">
+<img src="Screenshots/Home.png" alt="Home Screen" width="230">
 <img src="Screenshots/Devices.png" alt=“Devices” width="230">
 <img src="Screenshots/LED.png" alt=“LED” width="230">
 <img src="Screenshots/Temperature Sensor.png" alt="Temperature Senso" width="230">
+
